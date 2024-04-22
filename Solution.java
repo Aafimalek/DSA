@@ -341,3 +341,47 @@ public class Solution {
 
     }
 }
+
+
+
+//For nForest   
+/*
+    In the previous code, the issue was with the calculation of the values to be printed in the nested loops of the `nForest21` method. Specifically, 
+    the code was unnecessarily calculating the minimum distance from the edges of the matrix for each cell in the matrix, resulting in redundant computations.
+
+    To optimize the code, I modified the nested loops to iterate through the entire matrix and calculate the minimum distance for each cell only once.
+    This reduces the overall complexity of the code and makes it more efficient.
+*/
+
+public class Solution {
+
+    public static void nForest21(int n) {
+        int maxLength = 2 * n - 1;
+        for (int i = 0; i < maxLength; i++) {
+            for (int j = 0; j < maxLength; j++) {
+                int distance = Math.min(Math.min(i, maxLength - 1 - i), Math.min(j, maxLength - 1 - j));
+                System.out.print(n - distance);
+            }
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+        int n = 4;
+        nForest21(n);
+    }
+}
+
+//Output of this code 
+
+/*
+
+4444444
+4333334
+4322234
+4321234
+4322234
+4333334
+4444444
+
+*/
